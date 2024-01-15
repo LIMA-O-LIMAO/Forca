@@ -13,14 +13,14 @@ export default function Home() {
   const [verificar, setVerificar] = useState('');
 
   useEffect(() => {
-    const palavra = 'Samara';
+    const palavra = 'Clara';
     const Arrays = palavra.split('');
     setResposta(Arrays.map(() => '_'));
   }, []);
 
   
   function Teste() {
-    const palavra = 'Samara';
+    const palavra = 'Clara';
     const Arrays = palavra.split('');
     let letraEncontrada = false;
 
@@ -37,35 +37,29 @@ export default function Home() {
     if (!letraEncontrada) {
       setVida((prevVida) => prevVida > 0 ? prevVida - 1 : 0);
     
-      document.getElementById('vai').disabled = true;
+  
 
     }
 
     console.log('Letra encontrada?', letraEncontrada, novasRespostas);
   }
 
-if(vida===0){
 
-  router.push('/Pages');
+ 
 
+  if(vida===0){
 
-
-}
-  function reiniciar(){
-
-location.reload();
-
+    router.push('/Pages');
+  
 
   }
 
-
-
   return (
     <main className="flex flex-col h-full w-full">
-      <nav className="flex flex-row justify-center">FORCA</nav>
+      <h1 className="flex flex-row justify-center">FORCA</h1>
 
       <div className="gap-6 flex flex-col w-full h-full justify-center text-center items-center">
-        <p>Linhas {resposta.join(' ')}</p>
+        <p className="Linhas"> {resposta.join(' ')}</p>
 
         <input
           type="text"
@@ -79,7 +73,7 @@ location.reload();
         <p>Vidas restantes: {vida}</p>
         <button onClick={Teste}>Enviar</button>
 
-        <button onClick={reiniciar}>Reiniciar o jogo</button>
+     
       </div>
     </main>
   );
