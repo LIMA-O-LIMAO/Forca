@@ -1,7 +1,13 @@
 'use client'
 import { useState, useEffect } from "react";
+import { useRouter } from 'next/navigation'
 
 export default function Home() {
+
+  const router = useRouter();
+
+
+  
   const [vida, setVida] = useState(6);
   const [resposta, setResposta] = useState(['']);
   const [verificar, setVerificar] = useState('');
@@ -12,6 +18,7 @@ export default function Home() {
     setResposta(Arrays.map(() => '_'));
   }, []);
 
+  
   function Teste() {
     const palavra = 'Samara';
     const Arrays = palavra.split('');
@@ -31,12 +38,19 @@ export default function Home() {
       setVida((prevVida) => prevVida > 0 ? prevVida - 1 : 0);
     
       document.getElementById('vai').disabled = true;
+
     }
 
     console.log('Letra encontrada?', letraEncontrada, novasRespostas);
   }
 
+if(vida===0){
 
+  router.push('/Pages');
+
+
+
+}
   function reiniciar(){
 
 location.reload();
