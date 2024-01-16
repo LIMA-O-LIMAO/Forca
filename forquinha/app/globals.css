@@ -1,13 +1,22 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 html,body{
-
 width: 100vw;
 height: 100vh;
-  background-color: rgb(2, 66, 10);
+/*background-image: url(/teste.jpg);
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center;*/
+background-color: rgb(1, 51, 1);
   color: rgb(236, 236, 236);
+
+}
+main{
+
+border-radius:2px;
 }
 
 h1{
@@ -17,7 +26,7 @@ font-size: 4rem;
 }
 .Linhas{
 
-font-size: 4rem;
+font-size: 2.5rem;
 
 
 }
