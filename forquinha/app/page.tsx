@@ -12,16 +12,20 @@ export default function Home() {
   const [vida, setVida] = useState(6);
   const [resposta, setResposta] = useState(['']);
   const [verificar, setVerificar] = useState('');
-  const [palavra, setpalavra] = useState('Clara');
-
+  const palavras = ['Samara', 'Clara', 'Astrede', 'Igor'];
+  const [palavra, setPalavra] = useState('');
 
 
 
 
   useEffect(() => {
-    const Arrays = palavra.split('');
+    const palavraAleatoria = palavras[Math.floor(Math.random() * palavras.length)];
+    setPalavra(palavraAleatoria);
+
+    const Arrays = palavraAleatoria.split('');
     setResposta(Arrays.map(() => '_'));
   }, []);
+
 
 
   function Bt() {
@@ -84,7 +88,6 @@ export default function Home() {
     })
 
 
-    document.getElementById('vai').disabled = true
 
 
   }
@@ -97,14 +100,14 @@ export default function Home() {
     <main className="flex flex-col h-full w-full">
       <h1 className="flex flex-row justify-center">FORCA</h1>
 
-    
+
       <div className="gap-6 flex flex-col w-full h-full justify-center text-center items-center ">
         {vida==6 &&    <Image
       src="/fase1.png"
       width={300}
       height={300}
       alt="Picture of the author"
-      className="mr-16"
+      className="mr-16 "
   
 />}
         {vida==5 &&    <Image
@@ -157,12 +160,12 @@ export default function Home() {
 />}
 
 
-        <p className="Linhas"> {resposta.join(' ')}</p>
+        <p className=" animate-pulse Linhas"> {resposta.join(' ')}</p>
 
         <input
           type="text"
           maxLength={1}
-          className="text-center w-44 bg-transparent text-white outline-0 border-b-2 border-yellow-500 ;
+          className=" text-center uppercase  w-44 bg-transparent outline-0 border-b-2 border-gray-800 ;
           "
           placeholder="Digite aqui a letra"
           value={verificar}
@@ -170,9 +173,13 @@ export default function Home() {
           onChange={(e) => setVerificar(e.target.value)}
         />
         <p>Vidas restantes: {vida}</p>
-        <button onClick={Bt} id="botao">Enviar</button>
+        { vida>0 &&
+        <button className=" text-white  rounded-lg w-40 h-7 bg-cyan-500 shadow-lg shadow-cyan-500/50 " onClick={Bt} id="botao">Enviar</button>
+        }
 
+    {vida==0 &&
         <button onClick={Reiniciar}> Reiniciar jogo</button>
+      }
       </div>
     </main>
   );
