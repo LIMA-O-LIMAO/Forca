@@ -13,7 +13,7 @@ export default function Home() {
   const [vida, setVida] = useState(6);
   const [resposta, setResposta] = useState(['']);
   const [verificar, setVerificar] = useState('');
-  const palavras = ['Samara', 'Clara', 'Astrede', 'Igor'];
+  const palavras = ['Jogo', 'Vida', 'Construcao', 'Lindo', 'Universidade','Amor', 'Pele', 'Cristiano Ronaldo'];
   const [palavra, setPalavra] = useState('');
 
 
