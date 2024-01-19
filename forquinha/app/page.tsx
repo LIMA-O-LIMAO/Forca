@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from 'next/navigation'
 import Swal from 'sweetalert2'
 import Image from 'next/image'
+import { Result } from "postcss";
 
 export default function Home() {
 
@@ -52,6 +53,27 @@ export default function Home() {
     }
 
     console.log('Letra encontrada?', letraEncontrada, novasRespostas);
+    // Verificar vitória
+    if (!novasRespostas.includes('_')) {
+      // O jogador venceu!
+
+
+
+      Swal.fire({
+        title: 'PARABÉNS!',
+        text: 'Você acertou todas as letras. Você venceu!',
+        icon: 'success',
+        confirmButtonText: 'Confirmar',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Ação quando o botão de confirmação for pressionado
+          window.location.reload();
+        }
+      });
+    }
+
+
+
   }
 
 
@@ -59,12 +81,7 @@ export default function Home() {
 
 
 
-  if (vida === 5) {
 
-
-
-
-  }
 
 
 
@@ -89,7 +106,6 @@ export default function Home() {
 
 
 
-
   }
   function Reiniciar() {
 
@@ -102,84 +118,85 @@ export default function Home() {
 
 
       <div className="gap-6 flex flex-col w-full h-full justify-center text-center items-center ">
-        {vida==6 &&    <Image
-      src="/fase1.png"
-      width={300}
-      height={300}
-      alt="Picture of the author"
-      className="mr-16 "
-  
-/>}
-        {vida==5 &&    <Image
-      src="/cabeca.png"
-      width={300}
-      height={300}
-      alt="Picture of the author"
-      className="mr-16"
-  
-/>}
-        {vida==4 &&    <Image
-      src="/tronco.png"
-      width={300}
-      height={300}
-      alt="Picture of the author"
-      className="mr-16"
-  
-/>}
-        {vida==3 &&    <Image
-      src="/braco1.png"
-      width={300}
-      height={300}
-      alt="Picture of the author"
-      className="mr-16"
-  
-/>}
-        {vida==2 &&    <Image
-      src="/braco2.png"
-      width={300}
-      height={300}
-      alt="Picture of the author"
-      className="mr-16"
-  
-/>}
-        {vida==1 &&    <Image
-      src="/perna1.png"
-      width={300}
-      height={300}
-      alt="Picture of the author"
-      className="mr-16"
-  
-/>}
-        {vida==0 &&    <Image
-      src="/fim.png"
-      width={300}
-      height={300}
-      alt="Picture of the author"
-      className="mr-16"
-  
-/>}
+        {vida == 6 && <Image
+          src="/fase1.png"
+          width={300}
+          height={300}
+          alt="Picture of the author"
+          className="mr-16 "
+
+        />}
+        {vida == 5 && <Image
+          src="/cabeca.png"
+          width={300}
+          height={300}
+          alt="Picture of the author"
+          className="mr-16"
+
+        />}
+        {vida == 4 && <Image
+          src="/tronco.png"
+          width={300}
+          height={300}
+          alt="Picture of the author"
+          className="mr-16"
+
+        />}
+        {vida == 3 && <Image
+          src="/braco1.png"
+          width={300}
+          height={300}
+          alt="Picture of the author"
+          className="mr-16"
+
+        />}
+        {vida == 2 && <Image
+          src="/braco2.png"
+          width={300}
+          height={300}
+          alt="Picture of the author"
+          className="mr-16"
+
+        />}
+        {vida == 1 && <Image
+          src="/perna1.png"
+          width={300}
+          height={300}
+          alt="Picture of the author"
+          className="mr-16"
+
+        />}
+        {vida == 0 && <Image
+          src="/fim.png"
+          width={300}
+          height={300}
+          alt="Picture of the author"
+          className="mr-16"
+
+        />}
 
 
         <p className=" animate-pulse Linhas"> {resposta.join(' ')}</p>
-
-        <input
-          type="text"
-          maxLength={1}
-          className=" text-center uppercase  w-44 bg-transparent outline-0 border-b-2 border-gray-800 ;
+        {vida > 0 &&
+          <input
+            type="text"
+            maxLength={1}
+            className=" text-center uppercase  w-44 bg-transparent outline-0 border-b-2 border-gray-800 ;
           "
-          placeholder="Digite aqui a letra"
-          value={verificar}
-          id="vai"
-          onChange={(e) => setVerificar(e.target.value)}
-        />
+            placeholder="Digite aqui a letra"
+            value={verificar}
+            id="vai"
+            onChange={(e) => setVerificar(e.target.value)}
+          />
+        }
         <p>Vidas restantes: {vida}</p>
-        { vida>0 &&
-        <button className=" text-white  rounded-lg w-40 h-7 bg-cyan-500 shadow-lg shadow-cyan-500/50 " onClick={Bt} id="botao">Enviar</button>
+        {vida > 0 &&
+          <button className=" text-white  rounded-lg w-40 h-7 bg-cyan-500 shadow-lg shadow-cyan-500/50 " onClick={Bt} id="botao">Enviar</button>
         }
 
-    {vida==0 &&
-        <button onClick={Reiniciar}> Reiniciar jogo</button>
-      }
+        {vida == 0 &&
+          <button onClick={Reiniciar} className="text-white  rounded-lg w-40 h-7 bg-cyan-500 shadow-lg shadow-cyan-500/50"> Reiniciar jogo</button>
+        }
       </div>
     </main>
   );
