@@ -116,8 +116,9 @@ export default function Home() {
     <main className="flex flex-col h-full w-full">
       <h1 className="flex flex-row justify-center">FORCA</h1>
 
-
       <div className="gap-6 flex flex-col w-full h-full justify-center text-center items-center ">
+  
+      <p className="absolute  mr-7 text-[10px]">Sem dicas por enquanto</p>
         {vida == 6 && <Image
           src="/fase1.png"
           width={300}
